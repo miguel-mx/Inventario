@@ -1,0 +1,34 @@
+bien:
+    path:     /
+    defaults: { _controller: "InventarioBundle:Bien:index" }
+
+bien_show:
+    path:     /{id}/show
+    defaults: { _controller: "InventarioBundle:Bien:show" }
+
+bien_new:
+    path:     /new
+    defaults: { _controller: "InventarioBundle:Bien:new" }
+
+bien_create:
+    path:     /create
+    defaults: { _controller: "InventarioBundle:Bien:create" }
+    requirements: { _method: post }
+
+bien_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "InventarioBundle:Bien:edit" }
+
+bien_update:
+    path:     /{id}/update
+    defaults: { _controller: "InventarioBundle:Bien:update" }
+    requirements: { _method: post|put }
+
+bien_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "InventarioBundle:Bien:delete" }
+    requirements: { _method: post|delete }
+
+bien_consulta:
+    path:     /consulta
+    defaults: { _controller: "InventarioBundle:Bien:consulta" }

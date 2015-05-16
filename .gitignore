@@ -1,0 +1,16 @@
+/web/bundles/*
+/app/bootstrap*
+/app/cache/*
+/app/config/parameters.yml
+/app/config/parameters.ini
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/build/
+/vendor/*
+/bin/
+/composer.phar
+/composer.lock
+.idea/*
+/app/config/config.yml
+*~

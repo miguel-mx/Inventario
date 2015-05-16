@@ -1,0 +1,30 @@
+categoria:
+    path:     /
+    defaults: { _controller: "InventarioBundle:Categoria:index" }
+
+categoria_show:
+    path:     /{id}/show
+    defaults: { _controller: "InventarioBundle:Categoria:show" }
+
+categoria_new:
+    path:     /new
+    defaults: { _controller: "InventarioBundle:Categoria:new" }
+
+categoria_create:
+    path:     /create
+    defaults: { _controller: "InventarioBundle:Categoria:create" }
+    requirements: { _method: post }
+
+categoria_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "InventarioBundle:Categoria:edit" }
+
+categoria_update:
+    path:     /{id}/update
+    defaults: { _controller: "InventarioBundle:Categoria:update" }
+    requirements: { _method: post|put }
+
+categoria_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "InventarioBundle:Categoria:delete" }
+    requirements: { _method: post|delete }

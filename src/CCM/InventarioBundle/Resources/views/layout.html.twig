@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html ng-app="inventarios" lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    {#<link href="{{ asset('bundles/inventario/css/bootstrap.min.css') }}" rel="stylesheet">#}
+
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('bundles/inventario/css/plugins/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="{{ asset('bundles/inventario/css/plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/inventario/dist/css/timeline.css')}}" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/inventario/css/sb-admin-2.css')}}" type="text/css">
+    <!-- Morris Charts CSS -->
+    <link rel="stylesheet" href="{{ asset('bundles/inventario/css/plugins/morris.css')}}" type="text/css">
+
+    <!-- Custom Fonts -->
+    {#<link href="{{ asset('bundles/inventario/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">#}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    {% block wrapper %}
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Gestion Inventario CCM</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        {#<li><a href="{{ path() }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>#}
+                        <li><a href="{{ path('fos_user_security_login') }}"><i class="fa fa-user fa-fw"></i> Login</a></li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <form action="{{ path('bien_consulta') }}" method="post" class="form-signin">
+                                    <input type="text" name="dato" class="form-control"  placeholder="Buscar...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                    {#<a class="btn btn-default" href="{{ path('bien') }}" role="button"> <i class="fa fa-search"></i></a>#}
+                            </span>
+                                </form>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="{{ path('bien') }}"><i class="fa fa-home"></i> Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Consultas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="morris.html">Equipos Informaticos</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Equipos Audiovisuales</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Equipos de Oficina</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Moviliario</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="{{ path('bien') }}"><i class="fa fa-table fa-fw"></i> Bienes</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('responsable') }}"><i class="fa fa-users"></i> Responsables</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categoria') }}"><i class="fa fa-edit fa-fw"></i> Categorias</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="panels-wells.html">Panels and Wells</a>
+                                </li>
+                                <li>
+                                    <a href="buttons.html">Buttons</a>
+                                </li>
+                                <li>
+                                    <a href="notifications.html">Notifications</a>
+                                </li>
+                                <li>
+                                    <a href="typography.html">Typography</a>
+                                </li>
+                                <li>
+                                    <a href="icons.html"> Icons</a>
+                                </li>
+                                <li>
+                                    <a href="grid.html">Grid</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Second Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Second Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Third Level <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Third Level Item</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="blank.html">Blank Page</a>
+                                </li>
+                                <li>
+                                    <a href="login.html">Login Page</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h1 class="page-header">{% block titulo %}Tablas{% endblock %}</h1>
+
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            {% block body %}
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+
+                                <!-- /.table-responsive -->
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            {% endblock %}
+        </div>
+        <!-- /#page-wrapper -->
+    {% endblock %}
+</div>
+<!-- /#wrapper -->
+
+{% block js %}
+    <!-- jQuery -->
+    <script src="{{ asset('bundles/inventario/js/jquery.min.js')}}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('bundles/inventario/js/bootstrap.min.js')}}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{{ asset('bundles/inventario/js/plugins/metisMenu.min.js')}}"></script>
+
+
+    <!-- DataTables JavaScript -->
+    <script src="{{ asset('bundles/inventario/js/plugins/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('bundles/inventario/js/plugins/dataTables.bootstrap.min.js')}}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('bundles/inventario/js/sb-admin-2.js')}}"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_es-mx.js"></script>
+    <script src="{{ asset('bundles/inventario/js/plugins/ui-bootstrap-tpls-0.12.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/inventario/js/plugins/datepicker.js') }}" ></script>
+    <script src="{{ asset('bundles/inventario/js/plugins/timepicker.js') }}" ></script>
+
+{% endblock %}
+
+</body>
+
+</html>

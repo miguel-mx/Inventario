@@ -1,0 +1,17 @@
+inventario_categoria:
+    resource: "@InventarioBundle/Resources/config/routing/categoria.yml"
+    prefix:   /categoria
+
+inventario_responsable:
+    resource: "@InventarioBundle/Resources/config/routing/responsable.yml"
+    prefix:   /responsable
+
+
+inventario_bien:
+    resource: "@InventarioBundle/Resources/config/routing/bien.yml"
+    prefix:   /bien
+
+inventario_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: InventarioBundle:Default:index }
+

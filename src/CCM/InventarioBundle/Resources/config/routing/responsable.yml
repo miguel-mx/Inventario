@@ -1,0 +1,30 @@
+responsable:
+    path:     /
+    defaults: { _controller: "InventarioBundle:Responsable:index" }
+
+responsable_show:
+    path:     /{id}/show
+    defaults: { _controller: "InventarioBundle:Responsable:show" }
+
+responsable_new:
+    path:     /new
+    defaults: { _controller: "InventarioBundle:Responsable:new" }
+
+responsable_create:
+    path:     /create
+    defaults: { _controller: "InventarioBundle:Responsable:create" }
+    requirements: { _method: post }
+
+responsable_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "InventarioBundle:Responsable:edit" }
+
+responsable_update:
+    path:     /{id}/update
+    defaults: { _controller: "InventarioBundle:Responsable:update" }
+    requirements: { _method: post|put }
+
+responsable_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "InventarioBundle:Responsable:delete" }
+    requirements: { _method: post|delete }
