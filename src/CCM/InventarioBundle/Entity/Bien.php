@@ -57,35 +57,35 @@ class Bien
     /**
      * @var string
      *
-     * @ORM\Column(name="marca", type="string", length=255)
+     * @ORM\Column(name="marca", type="string",  nullable=true,length=255)
      */
     private $marca;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="modelo", type="string", length=255)
+     * @ORM\Column(name="modelo", type="string",  nullable=true,length=255)
      */
     private $modelo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="serie", type="string", length=255)
+     * @ORM\Column(name="serie", type="string",  nullable=true,length=255)
      */
     private $serie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="comentario", type="text")
+     * @ORM\Column(name="comentario", type="text", nullable=true)
      */
     private $comentario;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ubicacion", type="string", length=255)
+     * @ORM\Column(name="ubicacion", type="string",  nullable=true,length=255)
      */
     private $ubicacion;
 
@@ -112,7 +112,7 @@ class Bien
     /**
      * @var string
      *
-     * @ORM\Column(name="foto", type="string", length=255)
+     * @ORM\Column(name="foto", type="string",  nullable=true,length=255)
      */
     private $foto;
 
@@ -548,5 +548,11 @@ class Bien
     public function getNoInventario()
     {
         return $this->noInventario;
+    }
+
+    public function __toString()
+    {
+        return $this->getFolioSicop();
+
     }
 }

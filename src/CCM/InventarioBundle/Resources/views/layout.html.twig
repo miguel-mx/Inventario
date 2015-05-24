@@ -38,6 +38,15 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Modal UI-->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="{{ asset('bundles/inventario/js/plugins/example.js') }}" ></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="//select2.github.io/select2/select2-3.5.2/select2.css">
+    <link rel="stylesheet" href="{{ asset('bundles/inventario/css/plugins/select2-bootstrap.css')}}" type="text/css">
 </head>
 
 <body>
@@ -92,6 +101,7 @@
                                 <button class="btn btn-default" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
+
                                     {#<a class="btn btn-default" href="{{ path('bien') }}" role="button"> <i class="fa fa-search"></i></a>#}
                             </span>
                                 </form>
@@ -105,7 +115,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Consultas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="morris.html">Equipos Informaticos</a>
+                                    <a href="{{ path('bien_consultacatego',{ 'catego':'Equipos Informaticos' }) }}">Equipos Informaticos</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Equipos Audiovisuales</a>
@@ -127,6 +137,9 @@
                         </li>
                         <li>
                             <a href="{{ path('categoria') }}"><i class="fa fa-edit fa-fw"></i> Categorias</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bien_busqueda') }}"><i class="fa fa-search"></i> Busqueda Avanzada</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -262,11 +275,19 @@
         });
     </script>
 
+    <!-- Time y Date picker-->
+
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_es-mx.js"></script>
     <script src="{{ asset('bundles/inventario/js/plugins/ui-bootstrap-tpls-0.12.1.min.js') }}"></script>
     <script src="{{ asset('bundles/inventario/js/plugins/datepicker.js') }}" ></script>
     <script src="{{ asset('bundles/inventario/js/plugins/timepicker.js') }}" ></script>
+
+    <!-- Select2  -->
+    <script src="//select2.github.io/select2/select2-3.4.2/select2.js"></script>
+    <script type="text/javascript">
+        $('.select2').select2();
+    </script>
 
 {% endblock %}
 

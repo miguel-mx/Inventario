@@ -15,6 +15,58 @@ use CCM\InventarioBundle\Form\BienType;
 class BienController extends Controller
 {
 
+
+   /* public function bienesAction(Request $request)
+    {
+        $term = $request->query->get('term', null);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $bienes = $em->getRepository('InventarioBundle:Bien')->find($term);
+
+        return new JsonResponse($bienes);
+    }*/
+
+    public function busquedaAction(Request $request)
+    {
+        $defaultData = array('message' => 'Type your message here');
+        $form = $this->createFormBuilder($defaultData)
+            ->add('no_inventario', 'text')
+            ->add('fecha_adquicision', 'text')
+            ->add('marca', 'text')
+            ->add('modelo', 'text')
+            ->add('buscar', 'submit')
+            ->getForm();
+
+
+
+        $form->handleRequest($request);
+
+        /*if ($form->isValid()) {
+            // data is an array with "name", "email", and "message" keys
+            $data = $form->getData();
+        }*/
+        if ($form->isValid()) {
+           // $data = $form->get('no_inventario')->getData();
+            $data = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+
+            $entity = $em->getRepository('InventarioBundle:Bien')->findDatos($data);
+            if (!$entity) {
+                throw $this->createNotFoundException('No se encontraron coincidencias.');
+            }
+            return $this->render('InventarioBundle:Bien:consulta.html.twig', array(
+                'entity'=> $entity,
+            ));
+
+        }
+        return $this->render('InventarioBundle:Bien:busqueda.html.twig', array('form'=>$form->createView()));
+
+
+    }
+
+
+
     public function consultaAction(Request $request)
     {
         if ($request->getMethod() == 'POST') {
@@ -33,6 +85,21 @@ class BienController extends Controller
 
         return $this->render('InventarioBundle:Bien:consulta.html.twig', array(
             'entity'=> $entity,
+        ));
+    }
+
+    public function categoriaAction($catego)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('InventarioBundle:Bien')->findCategoria($catego);
+
+        if (!$entities) {
+            throw $this->createNotFoundException('Unable to find Bien entity.');
+        }
+
+
+        return $this->render('InventarioBundle:Bien:consultacatego.html.twig', array(
+            'entities'=> $entities,
         ));
     }
 
@@ -61,10 +128,14 @@ class BienController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
+            $request->getSession()->getFlashBag()->add(
+                'notice',
+                'Bien creado exitosamente!'
+            );
             return $this->redirect($this->generateUrl('bien_show', array('id' => $entity->getId())));
         }
 
@@ -192,7 +263,10 @@ class BienController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $request->getSession()->getFlashBag()->add(
+                'notice',
+                'Tus cambios fueron guardados!'
+            );
             return $this->redirect($this->generateUrl('bien_edit', array('id' => $id)));
         }
 
@@ -221,6 +295,10 @@ class BienController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $request->getSession()->getFlashBag()->add(
+                'notice',
+                'Activo eliminado exitosamente!'
+            );
         }
 
         return $this->redirect($this->generateUrl('bien'));
@@ -243,4 +321,18 @@ class BienController extends Controller
             ->getForm()
         ;
     }
+
+    private function crearCSV()
+    {
+        $csvFile = file('/home/hugo/Descargas/inventario.csv');
+        $data = [];
+        foreach ($csvFile as $line)
+        {
+            $data[] = str_getcsv($line);
+        }
+
+    }
+
+
+
 }

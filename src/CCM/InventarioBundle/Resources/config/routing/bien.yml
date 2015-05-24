@@ -32,3 +32,14 @@ bien_delete:
 bien_consulta:
     path:     /consulta
     defaults: { _controller: "InventarioBundle:Bien:consulta" }
+bien_consultacatego:
+    path:     /{catego}/consulta
+    defaults: { _controller: "InventarioBundle:Bien:categoria" }
+bien_busqueda:
+    path:     /busqueda
+    defaults: { _controller: "InventarioBundle:Bien:busqueda" }
+
+bien_complete:
+    path:     /complete
+    defaults: { _controller: "InventarioBundle:Bien:bienes" }
+

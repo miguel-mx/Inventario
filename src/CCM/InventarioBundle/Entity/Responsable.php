@@ -57,6 +57,22 @@ class Responsable
      */
     private $email;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Bien")
+     * @ORM\JoinTable(name="responsables_bienes",
+     *      joinColumns={@ORM\JoinColumn(name="responsable_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="bien_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
+
+    private $bienes;
+
+    public function __construct()
+    {
+        $this->bienes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
 
     /**
      * Get id
@@ -183,9 +199,44 @@ class Responsable
     {
         return $this->email;
     }
+
+
     public function __toString()
     {
         return $this->getNombre().' '.$this->getApellidos();
 
+    }
+
+    /**
+     * Add bienes
+     *
+     * @param \CCM\InventarioBundle\Entity\Bien $bienes
+     * @return Responsable
+     */
+    public function addBiene(\CCM\InventarioBundle\Entity\Bien $bienes)
+    {
+        $this->bienes[] = $bienes;
+
+        return $this;
+    }
+
+    /**
+     * Remove bienes
+     *
+     * @param \CCM\InventarioBundle\Entity\Bien $bienes
+     */
+    public function removeBiene(\CCM\InventarioBundle\Entity\Bien $bienes)
+    {
+        $this->bienes->removeElement($bienes);
+    }
+
+    /**
+     * Get bienes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBienes()
+    {
+        return $this->bienes;
     }
 }

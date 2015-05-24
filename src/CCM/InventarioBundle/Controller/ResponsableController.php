@@ -43,7 +43,10 @@ class ResponsableController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
+            $request->getSession()->getFlashBag()->add(
+                'notice',
+                'Responsable creado exitosamente!'
+            );
             return $this->redirect($this->generateUrl('responsable_show', array('id' => $entity->getId())));
         }
 
@@ -171,7 +174,10 @@ class ResponsableController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $request->getSession()->getFlashBag()->add(
+                'notice',
+                'Tus cambios fueron guardados!'
+            );
             return $this->redirect($this->generateUrl('responsable_edit', array('id' => $id)));
         }
 
@@ -200,6 +206,10 @@ class ResponsableController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $request->getSession()->getFlashBag()->add(
+                'notice',
+                'Responsable eliminado exitosamente!'
+            );
         }
 
         return $this->redirect($this->generateUrl('responsable'));

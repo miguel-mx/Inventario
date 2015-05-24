@@ -5,158 +5,140 @@
 
 {% block body -%}
     <div class="row">
-        <div class="col-lg-6">
-            <div class="panel panel-default">
+        <div class="col-lg-12">
+            {#<div class="panel panel-default">#}
+            <div class="chat-panel panel panel-primary chat-boder chat-panel-head">
                 <div class="panel-heading">
                     Datos del bien
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
+                        {#<div class="col-lg-6">#}
 
-                            {{ form_start(form) }}
-                            {{ form_errors(form) }}
+                        {{ form_start(form) }}
+                        {{ form_errors(form) }}
 
-                            <div class="form-group">
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.noInventario,'Numero de inventario:') }}
-                                {{ form_errors(form.noInventario) }}
-                                {{ form_widget(form.noInventario,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.noInventario,'Numero de inventario:') }}
+                            {{ form_errors(form.noInventario) }}
+                            {{ form_widget(form.noInventario,{'attr':{'class':'form-control'}}) }}
 
-                            </div>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.folioSicop,'Folio:') }}
-                                {{ form_errors(form.folioSicop) }}
-                                {{ form_widget(form.folioSicop,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.folioSicop,'Folio:') }}
+                            {{ form_errors(form.folioSicop) }}
+                            {{ form_widget(form.folioSicop,{'attr':{'class':'form-control'}}) }}
 
-                            </div>
+                        </div>
 
-
-
-                            <div class="form-group">
-                                {{ form_label(form.fechaAdq,'Fecha:') }}
-                                {{ form_errors(form.fechaAdq) }}
-                                {# {{ form_widget(form.fecha) }} #}
-                                <div ng-controller="DatepickerCtrl" class="row">
-                                    {#<div>
-                                        {{ form_label(form.fecha,'Fecha:') }}
-                                    </div>
-                                    <div>
-                                        {{ form_errors(form.fecha) }}  ccm_inventariobundle_bien_fechaAdq
-                                    </div>#}
-                                    <div class="col-md-6">
-                                        <p class="input-group">
-                                            <input type="date" id="ccm_inventariobundle_bien_fechaAdq" name="ccm_inventariobundle_bien[fechaAdq]" required="required" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2017-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                        <div class="form-group col-lg-6">
+                            {{ form_label(form.fechaAdq,'Fecha:') }}
+                            {{ form_errors(form.fechaAdq) }}
+                            {# {{ form_widget(form.fecha) }} #}
+                            <div ng-controller="DatepickerCtrl" class="row">
+                                <div class="col-md-6">
+                                    <p class="input-group">
+                                        <input type="date" id="ccm_inventariobundle_bien_fechaAdq" name="ccm_inventariobundle_bien[fechaAdq]" required="required" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2017-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                               <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                               </span>
-                                        </p>
-                                    </div>
-                                    {% do form.fechaAdq.setRendered %}
+                                    </p>
                                 </div>
+                                {% do form.fechaAdq.setRendered %}
                             </div>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.descripcion,'Descripción:') }}
-                                {{ form_errors(form.descripcion) }}
-                                {{ form_widget(form.descripcion,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.descripcion,'Descripción:') }}
+                            {{ form_errors(form.descripcion) }}
+                            {{ form_widget(form.descripcion,{'attr':{'class':'form-control'}}) }}
 
-                            </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.marca,'Marca:') }}
-                                {{ form_errors(form.marca) }}
-                                {{ form_widget(form.marca,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.marca,'Marca:') }}
+                            {{ form_errors(form.marca) }}
+                            {{ form_widget(form.marca,{'attr':{'class':'form-control','placeholder':'No requerido'}}) }}
 
-                            </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.modelo,'Modelo:') }}
-                                {{ form_errors(form.modelo) }}
-                                {{ form_widget(form.modelo,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.modelo,'Modelo:') }}
+                            {{ form_errors(form.modelo) }}
+                            {{ form_widget(form.modelo,{'attr':{'class':'form-control','placeholder':'No requerido'}}) }}
 
-                            </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.serie,'Serie:') }}
-                                {{ form_errors(form.serie) }}
-                                {{ form_widget(form.serie,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.serie,'Serie:') }}
+                            {{ form_errors(form.serie) }}
+                            {{ form_widget(form.serie,{'attr':{'class':'form-control','placeholder':'No requerido'}}) }}
 
-                            </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.comentario,'Comentario:') }}
-                                {{ form_errors(form.comentario) }}
-                                {{ form_widget(form.comentario,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.comentario,'Comentario:') }}
+                            {{ form_errors(form.comentario) }}
+                            {{ form_widget(form.comentario,{'attr':{'class':'form-control','placeholder':'No requerido: Comentario'}}) }}
 
-                            </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.ubicacion,'Ubicacion:') }}
-                                {{ form_errors(form.ubicacion) }}
-                                {{ form_widget(form.ubicacion,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.ubicacion,'Ubicacion:') }}
+                            {{ form_errors(form.ubicacion) }}
+                            {{ form_widget(form.ubicacion,{'attr':{'class':'form-control','placeholder':'No requerido'}}) }}
 
-                            </div>
+                        </div>
 
-                            <div class="form-group checkbox">
-                                <label>
-                                    {{ form_errors(form.validoFis) }}
-                                    {{ form_widget(form.validoFis) }}
-                                    Valido Fisicamente
-                                </label>
-                            </div>
-                            <div class="form-group">
+                        <div class="form-group col-lg-6">
+                            <label class="checkbox-inline">
+                                {{ form_errors(form.estatus) }}
+                                {{ form_widget(form.estatus) }}
+                                Activo
+                            </label>
+                            <label class="checkbox-inline">
+                                {{ form_errors(form.validoFis) }}
+                                {{ form_widget(form.validoFis) }}
+                                Valido Fisicamente
+                            </label>
+                        </div>
 
-                                {{ form_label(form.tipoAdq,'Tipo de adquisicion:') }}
-                                {{ form_errors(form.tipoAdq) }}
-                                {{ form_widget(form.tipoAdq,{'attr':{'class':'form-control'}}) }}
+                        <div class="form-group col-lg-6">
 
-                            </div>
+                            {{ form_label(form.tipoAdq,'Tipo de adquisicion:') }}
+                            {{ form_errors(form.tipoAdq) }}
+                            {{ form_widget(form.tipoAdq,{'attr':{'class':'form-control'}}) }}
 
-                            <div class="form-group checkbox">
-                                <label>
-                                    {{ form_errors(form.estatus) }}
-                                    {{ form_widget(form.estatus) }}
-                                    Activo
-                                </label>
-                            </div>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.foto,'Foto:') }}
-                                {{ form_errors(form.foto) }}
-                                {{ form_widget(form.foto,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.foto,'Foto:') }}
+                            {{ form_errors(form.foto) }}
+                            {{ form_widget(form.foto,{'attr':{'class':'form-control','placeholder':'No requerido'}}) }}
 
-                            </div>
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group col-lg-6">
 
-                                {{ form_label(form.responsable,'Responsable:') }}
-                                {{ form_errors(form.responsable) }}
-                                {{ form_widget(form.responsable,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.responsable,'Responsable:') }}
+                            {{ form_errors(form.responsable) }}
+                            {{ form_widget(form.responsable,{'attr':{'class':'form-control'}}) }}
 
-                            </div> <div class="form-group">
+                        </div> <div class="form-group col-lg-6">
 
-                                {{ form_label(form.categoria,'Categoria:') }}
-                                {{ form_errors(form.categoria) }}
-                                {{ form_widget(form.categoria,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.categoria,'Categoria:') }}
+                            {{ form_errors(form.categoria) }}
+                            {{ form_widget(form.categoria,{'attr':{'class':'form-control'}}) }}
 
-                            </div>
+                        </div>
 
-                            <div>
-
-                                {#{{ form_label(form.submit,'Guardar') }}#}
-                                {{ form_widget(form.submit,{'label':'Guardar'},{'attr':{'class':'btn btn-success'}}) }}
-                                <br>
-                            </div>
-                            {{ form_end(form) }}
-
-
-                        </div></div></div></div>
+                    </div></div> </div>{{ form_widget(form.submit,{'label':'Guardar'},{'attr':{'class':'btn btn-success'}}) }}{{ form_end(form) }}
         </div>
     </div>
 

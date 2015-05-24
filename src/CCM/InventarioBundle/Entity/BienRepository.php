@@ -14,8 +14,26 @@ class BienRepository extends EntityRepository
 {
 
 
+    public function findDatos(array $datos)
+    {
+
+        $em = $this->getEntityManager();
+        $dql = 'SELECT b FROM InventarioBundle:Bien b WHERE b.noInventario = :noInventario or b.marca = :marca';
+        $consulta = $em->createQuery($dql);
+        //$consulta->setParameter('noInventario',$noInventario['no_inventario']);
+
+        $consulta->setParameters(array(
+            'noInventario' => $datos['no_inventario'],
+            'marca' => $datos['marca']
+
+        ));
+
+        return $consulta->getOneOrNullResult();
+    }
+
     public function findBien($noInventario)
     {
+
         $em = $this->getEntityManager();
         $dql = 'SELECT b FROM InventarioBundle:Bien b WHERE b.noInventario = :noInventario';
         $consulta = $em->createQuery($dql);
@@ -23,19 +41,13 @@ class BienRepository extends EntityRepository
         return $consulta->getOneOrNullResult();
     }
 
-    public function findCategoria($tipo)
+    public function findCategoria($catego)
     {
         $em = $this->getEntityManager();
-        $dql = 'SELECT b FROM InventarioBundle:Bien b WHERE b.categoria = :tipo ';
+        $dql = 'SELECT b FROM InventarioBundle:Bien b WHERE b.categoria = :catego ';
         $consulta = $em->createQuery($dql);
-        $consulta->setParameter('tipo', $tipo);
+        $consulta->setParameter('catego', $catego);
         return $consulta->getResult();
     }
 
-
-
-
-
 }
-
-
