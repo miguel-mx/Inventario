@@ -19,7 +19,7 @@ class BienType extends AbstractType
             ->add('folioSicop')
             ->add('fechaAdq', 'date', array('input' => 'datetime','widget' => 'single_text','format' => 'dd-MM-yyyy',))
             ->add('descripcion')
-            ->add('marca','text',array('required'=>false))
+            ->add('marca')
             ->add('modelo','text',array('required'=>false))
             ->add('serie','text',array('required'=>false))
             ->add('comentario','textarea',array('required'=>false))
@@ -30,6 +30,7 @@ class BienType extends AbstractType
             ->add('foto','text',array('required'=>false))
             ->add('responsable') //por default no requerido!!
             ->add('categoria')  //por default no requerido!!
+            ->add('costo')
         ;
     }
     

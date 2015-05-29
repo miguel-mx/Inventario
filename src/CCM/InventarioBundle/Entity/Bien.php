@@ -3,6 +3,8 @@
 namespace CCM\InventarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Bien
@@ -24,7 +26,18 @@ class Bien
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+
+
     private $id;
+
+    /**
+     * @var float
+     * @ORM\Column(name="costo", type="float")
+     * @Assert\Type(type="float", message="Must be a number.")
+     * @Assert\NotBlank(message="No debe estar en blanco.")
+     */
+
+    private $costo;
 
     /**
      * @var string
@@ -48,17 +61,15 @@ class Bien
     private $fechaAdq;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="descripcion", type="text")
-     */
+     * @ORM\ManyToOne(targetEntity="CCM\InventarioBundle\Entity\Descripcion")
+     * @ORM\JoinColumn(name="descripcion_id", referencedColumnName="id")
+     **/
     private $descripcion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="marca", type="string",  nullable=true,length=255)
-     */
+     * @ORM\ManyToOne(targetEntity="CCM\InventarioBundle\Entity\Marca")
+     * @ORM\JoinColumn(name="marca_id", referencedColumnName="id")
+     **/
     private $marca;
 
     /**
@@ -92,7 +103,7 @@ class Bien
     /**
      * @var boolean
      *
-     * @ORM\Column(name="valido_fis", type="boolean")
+     * @ORM\Column(name="valido_fis", type="boolean", nullable=true)
      */
     private $validoFis;
 
@@ -105,7 +116,7 @@ class Bien
     /**
      * @var boolean
      *
-     * @ORM\Column(name="estatus", type="boolean")
+     * @ORM\Column(name="estatus", type="boolean", nullable=true)
      */
     private $estatus;
 
@@ -131,12 +142,12 @@ class Bien
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $created;
+    private $creado;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $modified;
+    private $modificado;
 
 
     /**
@@ -396,7 +407,7 @@ class Bien
     /**
      * Get estatus
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEstatus()
     {
@@ -431,52 +442,52 @@ class Bien
      */
     public function prePersist()
     {
-        $this->setCreated(new \DateTime());
-        $this->setModified(new \DateTime());
+        $this->creado = new \DateTime();
+        $this->setModificado(new \DateTime());
     }
     /**
      * @ORM\PreUpdate
      */
     public function preUpdate()
     {
-        $this->setModified(new \DateTime());
+        $this->setModificado(new \DateTime());
     }
 
     /**
-     * Set created
+     * Set creado
      *
-     * @param datetime $created
+     * @param datetime $creado
      */
-    public function setCreated($created)
+    public function setCreado($creado)
     {
-        $this->created = $created;
+        $this->creado = $creado;
     }
     /**
-     * Get created
+     * Get creado
      *
      * @return string
      */
-    public function getCreated()
+    public function getCreado()
     {
-        return $this->created;
+        return $this->creado;
     }
     /**
-     * Set modified
+     * Set modificado
      *
-     * @param datetime $modified
+     * @param datetime $modificado
      */
-    public function setModified($modified)
+    public function setModificado($modificado)
     {
-        $this->modified = $modified;
+        $this->modificado = $modificado;
     }
     /**
-     * Get modified
+     * Get modificado
      *
      * @return string
      */
-    public function getModified()
+    public function getModificado()
     {
-        return $this->modified;
+        return $this->modificado;
     }
 
     /**
@@ -554,5 +565,28 @@ class Bien
     {
         return $this->getFolioSicop();
 
+    }
+
+    /**
+     * Set costo
+     *
+     * @param float $costo
+     * @return Bien
+     */
+    public function setCosto($costo)
+    {
+        $this->costo = $costo;
+
+        return $this;
+    }
+
+    /**
+     * Get costo
+     *
+     * @return float 
+     */
+    public function getCosto()
+    {
+        return $this->costo;
     }
 }

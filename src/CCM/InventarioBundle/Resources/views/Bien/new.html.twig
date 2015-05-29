@@ -130,13 +130,22 @@
                             {{ form_errors(form.responsable) }}
                             {{ form_widget(form.responsable,{'attr':{'class':'form-control'}}) }}
 
-                        </div> <div class="form-group col-lg-6">
+                        </div>
+                        <div class="form-group col-lg-6">
 
                             {{ form_label(form.categoria,'Categoria:') }}
                             {{ form_errors(form.categoria) }}
                             {{ form_widget(form.categoria,{'attr':{'class':'form-control'}}) }}
 
                         </div>
+                        <div class="form-group col-lg-6">
+
+                            {{ form_label(form.costo,'Costo:') }}
+                            {{ form_errors(form.costo) }}
+                            {{ form_widget(form.costo,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+
 
                     </div></div> </div>{{ form_widget(form.submit,{'label':'Guardar'},{'attr':{'class':'btn btn-success'}}) }}{{ form_end(form) }}
         </div>

@@ -43,3 +43,7 @@ bien_complete:
     path:     /complete
     defaults: { _controller: "InventarioBundle:Bien:bienes" }
 
+bien_ics:
+    path:     /csv
+    defaults: { _controller: "InventarioBundle:Bien:csv" }
+
