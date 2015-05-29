@@ -63,6 +63,7 @@ class Bien
     /**
      * @ORM\ManyToOne(targetEntity="CCM\InventarioBundle\Entity\Descripcion")
      * @ORM\JoinColumn(name="descripcion_id", referencedColumnName="id")
+     * @ORM\Assert\NotBlank(message="No debe estar en blanco.")
      **/
     private $descripcion;
 
@@ -560,13 +561,6 @@ class Bien
     {
         return $this->noInventario;
     }
-
-    public function __toString()
-    {
-        return $this->getFolioSicop();
-
-    }
-
     /**
      * Set costo
      *
@@ -579,7 +573,6 @@ class Bien
 
         return $this;
     }
-
     /**
      * Get costo
      *
@@ -588,5 +581,10 @@ class Bien
     public function getCosto()
     {
         return $this->costo;
+    }
+    public function __toString()
+    {
+        return $this->getFolioSicop();
+
     }
 }

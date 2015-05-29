@@ -29,7 +29,7 @@ class otherCommand extends ContainerAwareCommand
         $i = 0;
             $array = array_unique($csvFile);
             foreach ($array as $line){
-                //$entity = new Descripcion();
+                $entity = new Descripcion();
                 //$entity = new Marca();
                 $data[] = str_getcsv($line);
                 $entity->setNombre($data[$i][0]);

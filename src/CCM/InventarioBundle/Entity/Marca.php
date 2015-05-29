@@ -64,7 +64,7 @@ class Marca
 
     public function __toString(){
 
-        return $this->getNombre();
+        return strtoupper($this->getNombre());
 
     }
 }
