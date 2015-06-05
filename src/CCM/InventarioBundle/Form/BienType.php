@@ -5,6 +5,7 @@ namespace CCM\InventarioBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use CCM\InventarioBundle\Entity\Descripcion;
 
 class BienType extends AbstractType
 {
@@ -14,11 +15,16 @@ class BienType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('noInventario')
             ->add('folioSicop')
             ->add('fechaAdq', 'date', array('input' => 'datetime','widget' => 'single_text','format' => 'dd-MM-yyyy',))
-            ->add('descripcion')
+            ->add('descripcion', 'entity', array(
+                'class' => 'InventarioBundle:Descripcion',
+                'empty_data'  => false,
+
+            ))
             ->add('marca')
             ->add('modelo','text',array('required'=>false))
             ->add('serie','text',array('required'=>false))

@@ -2,7 +2,7 @@
 <html ng-app="inventarios" lang="en">
 
 <head>
-
+    {% block head %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,10 @@
 
     <!-- DataTables CSS -->
     <link href="{{ asset('bundles/inventario/css/plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
+
+
+
+
     <!-- Timeline CSS -->
     <link rel="stylesheet" href="{{ asset('bundles/inventario/dist/css/timeline.css')}}" type="text/css">
     <!-- Custom CSS -->
@@ -47,6 +51,7 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="//select2.github.io/select2/select2-3.5.2/select2.css">
     <link rel="stylesheet" href="{{ asset('bundles/inventario/css/plugins/select2-bootstrap.css')}}" type="text/css">
+    {% endblock %}
 </head>
 
 <body>
@@ -141,72 +146,6 @@
                         <li>
                             <a href="{{ path('bien_busqueda') }}"><i class="fa fa-search"></i> Busqueda Avanzada</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -256,6 +195,7 @@
     <script src="{{ asset('bundles/inventario/js/bootstrap.min.js')}}"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
+
     <script src="{{ asset('bundles/inventario/js/plugins/metisMenu.min.js')}}"></script>
 
 
@@ -274,6 +214,7 @@
             });
         });
     </script>
+
 
     <!-- Time y Date picker-->
 

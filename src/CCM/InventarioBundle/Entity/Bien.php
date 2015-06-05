@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
+
 /**
  * Bien
  *
@@ -30,14 +31,6 @@ class Bien
 
     private $id;
 
-    /**
-     * @var float
-     * @ORM\Column(name="costo", type="float")
-     * @Assert\Type(type="float", message="Must be a number.")
-     * @Assert\NotBlank(message="No debe estar en blanco.")
-     */
-
-    private $costo;
 
     /**
      * @var string
@@ -61,16 +54,17 @@ class Bien
     private $fechaAdq;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CCM\InventarioBundle\Entity\Descripcion")
-     * @ORM\JoinColumn(name="descripcion_id", referencedColumnName="id")
-     * @ORM\Assert\NotBlank(message="No debe estar en blanco.")
-     **/
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string",  nullable=true,length=255)
+     */
     private $descripcion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CCM\InventarioBundle\Entity\Marca")
-     * @ORM\JoinColumn(name="marca_id", referencedColumnName="id")
-     **/
+     * @var string
+     *
+     * @ORM\Column(name="marca", type="string",  nullable=true,length=255)
+     */
     private $marca;
 
     /**
@@ -149,6 +143,15 @@ class Bien
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $modificado;
+
+    /**
+     * @var float
+     * @ORM\Column(name="costo", type="float")
+     * @Assert\Type(type="float", message="Must be a number.")
+     * @Assert\NotBlank(message="No debe estar en blanco.")
+     */
+
+    private $costo;
 
 
     /**

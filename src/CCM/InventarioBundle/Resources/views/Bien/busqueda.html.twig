@@ -5,29 +5,34 @@
 
 
 {% block body -%}
+    <div class="col-lg-6">
+        {{ form_start(form, {'action': path('bien_busqueda'), 'method': 'POST','class': 'form-horizontal'}) }}
+        {{ form_errors(form) }}
 
-    {{ form_start(form, {'action': path('bien_busqueda'), 'method': 'POST','class': 'form-horizontal'}) }}
-    {{ form_errors(form) }}
+        {{ form_label(form.no_inventario,'Descripción:') }}
+        {{ form_errors(form.no_inventario) }}
+        {{ form_widget(form.no_inventario,{'attr':{'class':'form-control'}}) }}
 
-    {{ form_label(form.no_inventario,'Descripción:') }}
-    {{ form_errors(form.no_inventario) }}
-    {{ form_widget(form.no_inventario,{'attr':{'class':'form-control'}}) }}
+        {{ form_label(form.fecha_adquicision,'Fecha de adquisicion:') }}
+        {{ form_errors(form.fecha_adquicision) }}
+        {{ form_widget(form.fecha_adquicision,{'attr':{'class':'form-control'}}) }}
 
-    {{ form_label(form.fecha_adquicision,'Fecha de adquisicion:') }}
-    {{ form_errors(form.fecha_adquicision) }}
-    {{ form_widget(form.fecha_adquicision,{'attr':{'class':'form-control'}}) }}
+        {{ form_label(form.marca,'Marca:') }}
+        {{ form_errors(form.marca) }}
+        {{ form_widget(form.marca,{'attr':{'class':'form-control'}}) }}
 
-    {{ form_label(form.marca,'Marca:') }}
-    {{ form_errors(form.marca) }}
-    {{ form_widget(form.marca,{'attr':{'class':'form-control'}}) }}
+        {{ form_label(form.modelo,'Modelo:') }}
+        {{ form_errors(form.modelo) }}
+        {{ form_widget(form.modelo,{'attr':{'class':'form-control'}}) }}
 
-    {{ form_label(form.modelo,'Modelo:') }}
-    {{ form_errors(form.modelo) }}
-    {{ form_widget(form.modelo,{'attr':{'class':'form-control'}}) }}
+        <br>
+        <p class="text-right">
 
-    {{ form_widget(form.buscar,{'label':'Buscar'},{'attr':{'class':'btn btn-success'}}) }}
+            {{ form_widget(form.buscar) }}
+        </p>
 
-    {{ form_end(form) }}
+        {{ form_end(form) }}
+    </div>
 
 
 {% endblock %}
