@@ -27,7 +27,6 @@ class Bien
      * @ORM\GeneratedValue(strategy="AUTO")
      */
 
-
     private $id;
 
     /**
@@ -63,7 +62,7 @@ class Bien
     /**
      * @ORM\ManyToOne(targetEntity="CCM\InventarioBundle\Entity\Descripcion")
      * @ORM\JoinColumn(name="descripcion_id", referencedColumnName="id")
-     * @ORM\Assert\NotBlank(message="No debe estar en blanco.")
+     * @Assert\NotBlank(message="No debe estar en blanco.")
      **/
     private $descripcion;
 

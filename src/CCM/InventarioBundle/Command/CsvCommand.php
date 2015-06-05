@@ -13,18 +13,30 @@ class CsvCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
-        $this->setName('csv:datos')
-            ->setDescription('Importa registros del archivo .csv a base de datos por medio de Doctrine ');
+        $this->setName('importa:bienes')
+            ->setDescription('Importa registros del archivo .csv a la tabla Bien')
+            ->addArgument(
+                'file',
+                InputArgument::REQUIRED,
+                'Archivo a importar?'
+            )
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $filename = $input->getArgument('file');
+
+        if (!file_exists($filename)) {
+            $output->writeln('<error>Error: El archivo ' . $filename .' no existe</error>');
+            return;
+        }
 
         $contenedor = $this->getContainer();
         $em = $contenedor->get('doctrine')->getManager();
 
-        $csvFile = file('/home/hugo/Desktop/bien.csv');
-        $data = [];
+        $csvFile = file($filename);
+        $data = array();
         $i = 0;
 
         foreach ($csvFile as $line) {
@@ -57,7 +69,6 @@ class CsvCommand extends ContainerAwareCommand
             $em->persist($entity);
             $em->flush();
             $i++;
-
 
         }
 
