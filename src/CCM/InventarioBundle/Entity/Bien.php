@@ -28,7 +28,6 @@ class Bien
      * @ORM\GeneratedValue(strategy="AUTO")
      */
 
-
     private $id;
 
 

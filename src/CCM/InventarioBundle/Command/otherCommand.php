@@ -24,7 +24,7 @@ class otherCommand extends ContainerAwareCommand
         $contenedor = $this->getContainer();
         $em = $contenedor->get('doctrine')->getManager();
         $csvFile = file('/home/hugo/Desktop/desc.csv');
-        //$csvFile = file('/home/hugo/Desktop/marca.csv');
+
         $data = [];
         $i = 0;
             $array = array_unique($csvFile);
