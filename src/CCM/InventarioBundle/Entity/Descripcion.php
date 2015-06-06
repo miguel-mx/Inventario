@@ -1,9 +1,6 @@
 <?php
-
 namespace CCM\InventarioBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Descripcion
  *
@@ -20,7 +17,6 @@ class Descripcion
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
@@ -28,11 +24,10 @@ class Descripcion
      */
     private $nombre;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -48,22 +43,21 @@ class Descripcion
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-
         return $this;
     }
 
     /**
      * Get nombre
      *
-     * @return string 
+     * @return string
      */
     public function getNombre()
     {
         return $this->nombre;
     }
+
     public function __toString()
     {
         return strtoupper($this->getNombre());
-
     }
 }

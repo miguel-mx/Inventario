@@ -64,8 +64,6 @@ class CsvCommand extends ContainerAwareCommand
             $entity->setEstatus(1);
             $entity->getCreado(new \DateTime());
             $entity->setModificado(new \DateTime());
-
-
             $em->persist($entity);
             $em->flush();
             $i++;

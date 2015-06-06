@@ -35,7 +35,7 @@ class BienController extends Controller
             ->add('fecha_adquicision', 'text')
             ->add('marca', 'text')
             ->add('modelo', 'text')
-            ->add('buscar', 'submit')
+            ->add('buscar', 'submit', array('label' => 'Buscar','attr' => array('class' => 'btn btn-success'),))
             ->getForm();
 
 
@@ -107,6 +107,7 @@ class BienController extends Controller
      * Lists all Bien entities.
      *
      */
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -123,6 +124,10 @@ class BienController extends Controller
      */
     public function createAction(Request $request)
     {
+
+        $em = $this->getDoctrine()->getManager();
+       // $options = $em->getRepository('InventarioBundle:Descripcion')->findAll();
+        //$options= array('m' => 'Male', 'f' => 'Female');
         $entity = new Bien();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
