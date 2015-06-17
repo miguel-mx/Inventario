@@ -15,40 +15,39 @@
                 <div class="panel-body">
                     <div class="row">
                         {#<div class="col-lg-6">#}
-
                         {{ form_start(form) }}
                         {{ form_errors(form) }}
 
                         <div class="form-group col-lg-6">
 
-                            {{ form_label(form.noInventario,'Numero de inventario:') }}
-                            {{ form_errors(form.noInventario) }}
-                            {{ form_widget(form.noInventario,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.inventario,'Numero de inventario:') }}
+                            {{ form_errors(form.inventario) }}
+                            {{ form_widget(form.inventario,{'attr':{'class':'form-control'}}) }}
 
                         </div>
 
                         <div class="form-group col-lg-6">
 
-                            {{ form_label(form.folioSicop,'Folio:') }}
-                            {{ form_errors(form.folioSicop) }}
-                            {{ form_widget(form.folioSicop,{'attr':{'class':'form-control'}}) }}
+                            {{ form_label(form.sicop,'Folio:') }}
+                            {{ form_errors(form.sicop) }}
+                            {{ form_widget(form.sicop,{'attr':{'class':'form-control'}}) }}
 
                         </div>
 
                         <div class="form-group col-lg-6">
-                            {{ form_label(form.fechaAdq,'Fecha:') }}
-                            {{ form_errors(form.fechaAdq) }}
+                            {{ form_label(form.adquisicion,'Fecha:') }}
+                            {{ form_errors(form.adquisicion) }}
                             {# {{ form_widget(form.fecha) }} #}
                             <div ng-controller="DatepickerCtrl" class="row">
                                 <div class="col-md-6">
                                     <p class="input-group">
-                                        <input type="date" id="ccm_inventariobundle_bien_fechaAdq" name="ccm_inventariobundle_bien[fechaAdq]" required="required" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2017-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                        <input type="date" id="ccm_inventariobundle_bien_adquisicion" name="ccm_inventariobundle_bien[adquisicion]" required="required" class="form-control" datepicker-popup="dd-MM-yyyy" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2017-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                               <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                               </span>
                                     </p>
                                 </div>
-                                {% do form.fechaAdq.setRendered %}
+                                {% do form.adquisicion.setRendered %}
                             </div>
                         </div>
 
@@ -59,14 +58,6 @@
                             {{ form_widget(form.descripcion,{'attr':{'class':'form-control'}}) }}
 
                         </div>
-
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
 
                         <div class="form-group col-lg-6">
 
@@ -111,18 +102,10 @@
                                 Activo
                             </label>
                             <label class="checkbox-inline">
-                                {{ form_errors(form.validoFis) }}
-                                {{ form_widget(form.validoFis) }}
+                                {{ form_errors(form.valido) }}
+                                {{ form_widget(form.valido) }}
                                 Valido Fisicamente
                             </label>
-                        </div>
-
-                        <div class="form-group col-lg-6">
-
-                            {{ form_label(form.tipoAdq,'Tipo de adquisicion:') }}
-                            {{ form_errors(form.tipoAdq) }}
-                            {{ form_widget(form.tipoAdq,{'attr':{'class':'form-control'}}) }}
-
                         </div>
 
                         <div class="form-group col-lg-6">
@@ -147,14 +130,6 @@
                             {{ form_widget(form.categoria,{'attr':{'class':'form-control'}}) }}
 
                         </div>
-                        <div class="form-group col-lg-6">
-
-                            {{ form_label(form.costo,'Costo:') }}
-                            {{ form_errors(form.costo) }}
-                            {{ form_widget(form.costo,{'attr':{'class':'form-control'}}) }}
-
-                        </div>
-
 
                     </div></div> </div>{{ form_widget(form.submit,{'label':'Guardar'},{'attr':{'class':'btn btn-success'}}) }}{{ form_end(form) }}
         </div>

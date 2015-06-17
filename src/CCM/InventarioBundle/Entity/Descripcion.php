@@ -58,6 +58,7 @@ class Descripcion
 
     public function __toString()
     {
-        return strtoupper($this->getNombre());
+        //return strtoupper($this->getNombre());
+        return $this->getNombre();
     }
 }

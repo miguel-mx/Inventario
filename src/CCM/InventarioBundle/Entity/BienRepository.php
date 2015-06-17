@@ -16,36 +16,57 @@ class BienRepository extends EntityRepository
 
     public function findDatos(array $datos)
     {
-
+        if($datos['responsable'])
+        {
+            $words = explode(" ", $datos['responsable']);
+            $nombre = $words[0];
+            $apellidos = $words[1];
+        }
+       // $fecha = date('Y/m/d',strtotime($datos['adquisicion']));
         $em = $this->getEntityManager();
-        $dql = 'SELECT b FROM InventarioBundle:Bien b WHERE b.noInventario = :noInventario or b.marca = :marca';
-        $consulta = $em->createQuery($dql);
-        //$consulta->setParameter('noInventario',$noInventario['no_inventario']);
-
+        $consulta = $em->createQuery( '
+            SELECT b
+            FROM InventarioBundle:Bien b
+            JOIN b.responsable r
+            WHERE r.nombre LIKE :nombre
+            AND r.apellidos LIKE :apellidos
+            AND b.descripcion LIKE :descripcion
+            AND b.adquisicion BETWEEN :fecha1 AND :fecha2
+            ORDER BY b.adquisicion DESC
+            ');
         $consulta->setParameters(array(
-            'noInventario' => $datos['no_inventario'],
-            'marca' => $datos['marca']
+            'descripcion' => $datos['descripcion'],
+            'nombre' => $nombre,
+            'apellidos' => $apellidos,
+            'fecha1' => $datos['fecha1'],
+            'fecha2' => $datos['fecha2']
 
         ));
-
-        return $consulta->getOneOrNullResult();
+        return $consulta->getResult();
+//        'fecha' => date('Y/m/d',strtotime($datos['adquisicion'])) OR b.adquisicion LIKE :fecha OR b.adquisicion BETWEEN :adquisicion AND :fecha ORDER BY b.adquisicion DESC;
     }
 
-    public function findBien($noInventario)
+    public function findBien($inventario)
     {
 
         $em = $this->getEntityManager();
-        $dql = 'SELECT b FROM InventarioBundle:Bien b WHERE b.noInventario = :noInventario';
-        $consulta = $em->createQuery($dql);
-        $consulta->setParameter('noInventario', $noInventario);
+        $consulta = $em->createQuery('
+            SELECT b
+            FROM InventarioBundle:Bien b
+            WHERE b.inventario = :inventario
+            ');
+        $consulta->setParameter('inventario', $inventario);
         return $consulta->getOneOrNullResult();
     }
 
     public function findCategoria($catego)
     {
         $em = $this->getEntityManager();
-        $dql = 'SELECT b FROM InventarioBundle:Bien b WHERE b.categoria = :catego ';
-        $consulta = $em->createQuery($dql);
+        $consulta = $em->createQuery('
+            SELECT b
+            FROM InventarioBundle:Bien b
+            WHERE b.categoria = :catego
+            ');
         $consulta->setParameter('catego', $catego);
         return $consulta->getResult();
     }

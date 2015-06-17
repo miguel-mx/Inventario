@@ -4,7 +4,7 @@ namespace CCM\InventarioBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Doctrine\ORM\EntityRepository;
 use CCM\InventarioBundle\Entity\Bien;
 use CCM\InventarioBundle\Form\BienType;
 
@@ -31,11 +31,25 @@ class BienController extends Controller
     {
         $defaultData = array('message' => 'Type your message here');
         $form = $this->createFormBuilder($defaultData)
-            ->add('no_inventario', 'text')
-            ->add('fecha_adquicision', 'text')
-            ->add('marca', 'text')
-            ->add('modelo', 'text')
+            //->add('descripcion', 'text',array('required' => false))
+            ->add('descripcion', 'entity', array(
+                 'class' => 'InventarioBundle:Descripcion',
+                 'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('d')
+                        ->orderBy('d.nombre', 'ASC');
+                },
+                 'required'    => false
+
+             ))
+            ->add('responsable','entity',array(
+                'class' => 'InventarioBundle:Responsable',
+                'required' => false
+            ))
+            ->add('fecha1', 'date', array('input' => 'datetime','widget' => 'single_text','format' => 'yyyy-MM-dd',))
+            ->add('fecha2', 'date', array('input' => 'datetime','widget' => 'single_text','format' => 'yyyy-MM-dd',))
+
             ->add('buscar', 'submit', array('label' => 'Buscar','attr' => array('class' => 'btn btn-success'),))
+            ->add('limpiar', 'reset', array('label' => 'Limpiar','attr' => array('class' => 'btn btn-default'),))
             ->getForm();
 
 
@@ -51,12 +65,15 @@ class BienController extends Controller
             $data = $form->getData();
             $em = $this->getDoctrine()->getManager();
 
-            $entity = $em->getRepository('InventarioBundle:Bien')->findDatos($data);
-            if (!$entity) {
+            $entities = $em->getRepository('InventarioBundle:Bien')->findDatos($data);
+//            $entities = $em->getRepository('InventarioBundle:Bien')->findOneBy(array(
+//                'descripcion' => 'Archivero','marca' =>'S/M'));
+
+            if (!$entities) {
                 throw $this->createNotFoundException('No se encontraron coincidencias.');
             }
             return $this->render('InventarioBundle:Bien:consulta.html.twig', array(
-                'entity'=> $entity,
+                'entities'=> $entities,
             ));
 
         }

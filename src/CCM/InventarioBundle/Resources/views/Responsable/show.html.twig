@@ -38,16 +38,7 @@
                 <th>Email</th>
                 <td>{{ entity.email }}</td>
             </tr>
-            <tr>
-                <th>Bienes</th>
-                <td>
-                    <ol class="breadcrumb">
-                        {% for bien in entity.bienes %}
-                            <li><a href="{{ path('bien_show', { 'id': bien.id }) }}">{{ bien.folioSicop }}</a></li>
-                        {% endfor %}
-                    </ol>
-                </td>
-            </tr>
+
         </tbody>
     </table>
 

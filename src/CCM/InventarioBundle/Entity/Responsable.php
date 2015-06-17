@@ -39,38 +39,38 @@ class Responsable
     /**
      * @var string
      *
-     * @ORM\Column(name="telefono", type="string", length=255)
+     * @ORM\Column(name="telefono", type="string", length=255, nullable=true)
      */
     private $telefono;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="puesto", type="string", length=255)
+     * @ORM\Column(name="puesto", type="string", length=255,nullable=true)
      */
     private $puesto;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255,nullable=true)
      */
     private $email;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Bien")
-     * @ORM\JoinTable(name="responsables_bienes",
-     *      joinColumns={@ORM\JoinColumn(name="responsable_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="bien_id", referencedColumnName="id", unique=true)}
-     *      )
-     **/
+     * @var string
+     *
+     * @ORM\Column(name="titulo", type="string", length=255)
+     */
+    private $titulo;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ubicacion", type="string", length=255)
+     */
 
-    private $bienes;
+    private $ubicacion;
 
-    public function __construct()
-    {
-        $this->bienes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
 
@@ -83,6 +83,20 @@ class Responsable
     {
         return $this->id;
     }
+
+    /**
+     * Set id
+     *
+     * @param string $id
+     * @return Responsable
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
 
     /**
      * Set nombre
@@ -207,36 +221,53 @@ class Responsable
 
     }
 
+
+
     /**
-     * Add bienes
+     * Set titulo
      *
-     * @param \CCM\InventarioBundle\Entity\Bien $bienes
+     * @param string $titulo
      * @return Responsable
      */
-    public function addBiene(\CCM\InventarioBundle\Entity\Bien $bienes)
+    public function setTitulo($titulo)
     {
-        $this->bienes[] = $bienes;
+        $this->titulo = $titulo;
 
         return $this;
     }
 
     /**
-     * Remove bienes
+     * Get titulo
      *
-     * @param \CCM\InventarioBundle\Entity\Bien $bienes
+     * @return string 
      */
-    public function removeBiene(\CCM\InventarioBundle\Entity\Bien $bienes)
+    public function getTitulo()
     {
-        $this->bienes->removeElement($bienes);
+        return $this->titulo;
+    }
+
+
+
+    /**
+     * Set ubicacion
+     *
+     * @param string $ubicacion
+     * @return Responsable
+     */
+    public function setUbicacion($ubicacion)
+    {
+        $this->ubicacion = $ubicacion;
+
+        return $this;
     }
 
     /**
-     * Get bienes
+     * Get ubicacion
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return string 
      */
-    public function getBienes()
+    public function getUbicacion()
     {
-        return $this->bienes;
+        return $this->ubicacion;
     }
 }

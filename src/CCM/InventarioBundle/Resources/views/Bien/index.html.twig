@@ -25,10 +25,10 @@
             <th>Comentario</th>
             <th>Ubicacion</th>
             <th>Validofis</th>
-            <th>Tipoadq</th>
+            <th>Responsable</th>
             <th>Estatus</th>
-            <th>Foto</th>
             <th>Acciones</th>
+
         </tr>
         </thead>
         <tbody>
@@ -37,10 +37,11 @@
             <td><a href="{{ path('bien_show', { 'id': entity.id }) }}">{{ entity.descripcion }}</a></td>
             <td>{{ entity.comentario }}</td>
             <td>{{ entity.ubicacion }}</td>
-            <td>{% if entity.validoFis %} Si {% else %} No {% endif %}</td>
-            <td>{{ entity.tipoAdq }}</td>
+            <td>{% if entity.valido %} Si {% else %} No {% endif %}</td>
+            <td>{% if entity.responsable %}{{ entity.responsable.nombre }} {{ entity.responsable.apellidos }}{% endif %}</td>
             <td>{% if entity.estatus %} Activo {% else %} Inactivo {% endif %}</td>
-            <td>{{ entity.foto }}</td>{#
+
+            {#
                 <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.modified %}{{ entity.modified|date('Y-m-d H:i:s') }}{% endif %}</td>#}
             <td>

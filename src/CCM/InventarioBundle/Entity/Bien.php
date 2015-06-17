@@ -12,10 +12,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
  */
 /**
  * @ORM\Entity(repositoryClass="CCM\InventarioBundle\Entity\BienRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 
 class Bien
@@ -34,23 +34,23 @@ class Bien
     /**
      * @var string
      *
-     * @ORM\Column(name="noInventario", type="string", length=255)
+     * @ORM\Column(name="inventario", type="string", length=255, nullable=true)
      */
-    private $noInventario;
+    private $inventario;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="folio_sicop", type="string", length=255)
+     * @ORM\Column(name="sicop", type="string", length=255, nullable=true)
      */
-    private $folioSicop;
+    private $sicop;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_adq", type="date")
+     * @ORM\Column(name="adquisicion", type="date",nullable=true)
      */
-    private $fechaAdq;
+    private $adquisicion;
 
     /**
      * @var string
@@ -97,15 +97,11 @@ class Bien
     /**
      * @var boolean
      *
-     * @ORM\Column(name="valido_fis", type="boolean", nullable=true)
+     * @ORM\Column(name="valido", type="boolean", nullable=true)
      */
-    private $validoFis;
+    private $valido;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="CCM\InventarioBundle\Entity\Adquisicion")
-     * @ORM\JoinColumn(name="adquisicion_id", referencedColumnName="id")
-     **/
-    private $tipoAdq;
+
 
     /**
      * @var boolean
@@ -134,6 +130,7 @@ class Bien
     private $categoria;
 
     /**
+     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $creado;
@@ -142,15 +139,6 @@ class Bien
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $modificado;
-
-    /**
-     * @var float
-     * @ORM\Column(name="costo", type="float")
-     * @Assert\Type(type="float", message="Must be a number.")
-     * @Assert\NotBlank(message="No debe estar en blanco.")
-     */
-
-    private $costo;
 
 
     /**
@@ -165,49 +153,49 @@ class Bien
 
 
     /**
-     * Set folioSicop
+     * Set sicop
      *
-     * @param string $folioSicop
+     * @param string $sicop
      * @return Bien
      */
-    public function setFolioSicop($folioSicop)
+    public function setSicop($sicop)
     {
-        $this->folioSicop = $folioSicop;
+        $this->sicop = $sicop;
 
         return $this;
     }
 
     /**
-     * Get folioSicop
+     * Get sicop
      *
      * @return string 
      */
-    public function getFolioSicop()
+    public function getSicop()
     {
-        return $this->folioSicop;
+        return $this->sicop;
     }
 
     /**
-     * Set fechaAdq
+     * Set adquisicion
      *
-     * @param \DateTime $fechaAdq
+     * @param \DateTime $adquisicion
      * @return Bien
      */
-    public function setFechaAdq($fechaAdq)
+    public function setAdquisicion($adquisicion)
     {
-        $this->fechaAdq = $fechaAdq;
+        $this->adquisicion = $adquisicion;
 
         return $this;
     }
 
     /**
-     * Get fechaAdq
+     * Get adquisicion
      *
      * @return \DateTime 
      */
-    public function getFechaAdq()
+    public function getAdquisicion()
     {
-        return $this->fechaAdq;
+        return $this->adquisicion;
     }
 
     /**
@@ -349,50 +337,28 @@ class Bien
     }
 
     /**
-     * Set validoFis
+     * Set valido
      *
-     * @param boolean $validoFis
+     * @param boolean $valido
      * @return Bien
      */
-    public function setValidoFis($validoFis)
+    public function setValido($valido)
     {
-        $this->validoFis = $validoFis;
+        $this->valido = $valido;
 
         return $this;
     }
 
     /**
-     * Get validoFis
+     * Get valido
      *
      * @return boolean 
      */
-    public function getValidoFis()
+    public function getValido()
     {
-        return $this->validoFis;
+        return $this->valido;
     }
 
-    /**
- * Set tipoAdq
- *
- * @param string $tipoAdq
- * @return Bien
- */
-    public function setTipoAdq($tipoAdq)
-    {
-        $this->tipoAdq = $tipoAdq;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoAdq
-     *
-     * @return string 
-     */
-    public function getTipoAdq()
-    {
-        return $this->tipoAdq;
-    }
 
     /**
      * Set estatus
@@ -459,16 +425,18 @@ class Bien
     /**
      * Set creado
      *
-     * @param datetime $creado
+     * @param \DateTime $creado
+     * @return Bien
      */
     public function setCreado($creado)
     {
         $this->creado = $creado;
+        return $this;
     }
     /**
      * Get creado
      *
-     * @return string
+     * @return \Datetime
      */
     public function getCreado()
     {
@@ -542,51 +510,30 @@ class Bien
 
 
     /**
-     * Set noInventario
+     * Set inventario
      *
-     * @param string $noInventario
+     * @param string $inventario
      * @return Bien
      */
-    public function setNoInventario($noInventario)
+    public function setInventario($inventario)
     {
-        $this->noInventario = $noInventario;
+        $this->inventario = $inventario;
 
         return $this;
     }
 
     /**
-     * Get noInventario
+     * Get inventario
      *
      * @return string 
      */
-    public function getNoInventario()
+    public function getInventario()
     {
-        return $this->noInventario;
-    }
-    /**
-     * Set costo
-     *
-     * @param float $costo
-     * @return Bien
-     */
-    public function setCosto($costo)
-    {
-        $this->costo = $costo;
-
-        return $this;
-    }
-    /**
-     * Get costo
-     *
-     * @return float 
-     */
-    public function getCosto()
-    {
-        return $this->costo;
+        return $this->inventario;
     }
     public function __toString()
     {
-        return $this->getFolioSicop();
+        return $this->getSicop();
 
     }
 }

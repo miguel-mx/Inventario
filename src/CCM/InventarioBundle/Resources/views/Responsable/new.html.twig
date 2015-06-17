@@ -49,12 +49,12 @@
                             {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
 
                         </div>
-
                         <div class="form-group col-lg-6">
-                            {{ form_label(form.bienes,'Bienes:') }}
-                            {{ form_errors(form.bienes) }}
-                            {{ form_widget(form.bienes,{'attr':{'class':'select2 form-control','placeholder':'No requerido: Bien(es) para asignar'}}) }}
+                            {{ form_label(form.ubicacion,'Ubicaciones:') }}
+                            {{ form_errors(form.ubicacion) }}
+                            {{ form_widget(form.ubicacion,{'attr':{'class':'select2 form-control','placeholder':'Requerido: responsable o lista de responsables'}}) }}
                         </div>
+
 
                     </div></div></div>{{ form_widget(form.submit,{'label':'Guardar'},{'attr':{'class':'btn btn-success'}}) }}{{ form_end(form) }}
         </div></div>

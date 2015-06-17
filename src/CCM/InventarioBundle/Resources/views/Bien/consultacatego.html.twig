@@ -12,15 +12,15 @@
         </tr>
         <tr>
             <th>Numero de Inventario</th>
-            <td>{{ entity.noInventario }}</td>
+            <td>{{ entity.inventario }}</td>
         </tr>
         <tr>
             <th>Folio Sicop</th>
-            <td>{{ entity.folioSicop }}</td>
+            <td>{{ entity.sicop }}</td>
         </tr>
         <tr>
             <th>Fecha de Adquisicion</th>
-            <td>{{ entity.fechaAdq|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.adquisicion|date('Y-m-d H:i:s') }}</td>
         </tr>
         <tr>
             <th>Descripción</th>
@@ -49,10 +49,6 @@
         <tr>
             <th>Valido Fisicamente</th>
             <td>{% if entity.validoFis %} Si {% else %} No {% endif %}</td>
-        </tr>
-        <tr>
-            <th>Tipo de Adquicision</th>
-            <td>{{ entity.tipoAdq }}</td>
         </tr>
         <tr>
             <th>Estatus</th>
