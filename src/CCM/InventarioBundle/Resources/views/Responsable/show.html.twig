@@ -42,17 +42,10 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('responsable') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('responsable_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
+    <ul class="list-inline">
+        <li>{{ form(delete_form) }}</li>
+        <li><a href="{{ path('responsable') }}" class="btn btn-default" >Ir a lista</a></li>
+        <li><a href="{{ path('responsable_edit', { 'id': entity.id }) }}" class="btn btn-default" >Editar</a></li>
+    </ul>
 {% endblock %}

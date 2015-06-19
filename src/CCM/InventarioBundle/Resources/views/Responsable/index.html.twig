@@ -36,16 +36,7 @@
                 <td>{{ entity.telefono }}</td>
                 <td>{{ entity.puesto }}</td>
                 <td>{{ entity.email }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('responsable_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('responsable_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+                <td><a href="{{ path('responsable_edit', { 'id': entity.id }) }}" class="btn btn-primary btn-xs">editar</a></td>
             </tr>
         {% endfor %}
         </tbody>

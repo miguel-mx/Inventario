@@ -54,17 +54,28 @@
                 {{ form_widget(edit_form.email,{'attr':{'class':'form-control'}}) }}
 
             </div>
-
             <div class="form-group">
-                {{ form_widget(edit_form.submit,{'label':'Actualizar','attr':{'class':'btn btn-default'}}) }}
-            </div>
-            {{ form_end(edit_form) }}
 
-            <p>
-                {{ form(delete_form) }}
-                <a href="{{ path('responsable') }}" class="btn btn-default" >Ir a lista</a>
-                <a href="{{ path('responsable_show', { 'id': entity.id }) }}" class="btn btn-default" >Mostrar</a>
-            </p>
+                {{ form_label(edit_form.titulo,'Titulo:') }}
+                {{ form_errors(edit_form.titulo) }}
+                {{ form_widget(edit_form.titulo,{'attr':{'class':'form-control'}}) }}
+
+            </div>
+            <div class="form-group">
+
+                {{ form_label(edit_form.ubicacion,'Ubicacion:') }}
+                {{ form_errors(edit_form.ubicacion) }}
+                {{ form_widget(edit_form.ubicacion,{'attr':{'class':'form-control'}}) }}
+
+            </div>
+
+            <hr>
+            <ul class="list-inline">
+                <li>{{ form_widget(edit_form.submit,{'label':'Actualizar','attr':{'class':'btn btn-default'}}) }}</li>{{ form_end(edit_form) }}
+                <li>{{ form(delete_form) }}</li>
+                <li><a href="{{ path('responsable') }}" class="btn btn-default" >Ir a lista</a></li>
+                <li><a href="{{ path('responsable_show', { 'id': entity.id }) }}" class="btn btn-default" >Mostrar</a></li>
+            </ul>
         </div>
     </div>
 {% endblock %}

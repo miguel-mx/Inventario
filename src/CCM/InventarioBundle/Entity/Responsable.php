@@ -3,7 +3,7 @@
 namespace CCM\InventarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\Criteria;
 /**
  * Responsable
  *
@@ -63,6 +63,7 @@ class Responsable
      * @ORM\Column(name="titulo", type="string", length=255)
      */
     private $titulo;
+
     /**
      * @var string
      *

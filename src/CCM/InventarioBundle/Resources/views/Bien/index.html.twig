@@ -40,19 +40,9 @@
             <td>{% if entity.valido %} Si {% else %} No {% endif %}</td>
             <td>{% if entity.responsable %}{{ entity.responsable.nombre }} {{ entity.responsable.apellidos }}{% endif %}</td>
             <td>{% if entity.estatus %} Activo {% else %} Inactivo {% endif %}</td>
-
-            {#
-                <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.modified %}{{ entity.modified|date('Y-m-d H:i:s') }}{% endif %}</td>#}
             <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('bien_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('bien_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <a href="{{ path('bien_edit', { 'id': entity.id }) }}" class="btn btn-primary btn-xs">editar</a>
+
                 {#<div ng-controller="ModalDemoCtrl">
                     <script type="text/ng-template" id="myModalContent.html">
                         <div class="modal-header">

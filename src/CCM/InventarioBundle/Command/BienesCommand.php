@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use CCM\InventarioBundle\Entity\Bien;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-class CsvCommand extends ContainerAwareCommand
+class BienesCommand extends ContainerAwareCommand
 {
     protected function configure()
     {

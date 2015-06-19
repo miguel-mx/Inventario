@@ -50,12 +50,18 @@
 
                         </div>
                         <div class="form-group col-lg-6">
-                            {{ form_label(form.ubicacion,'Ubicaciones:') }}
+                            {{ form_label(form.titulo,'Titulo:') }}
+                            {{ form_errors(form.titulo) }}
+                            {{ form_widget(form.titulo,{'attr':{'class':'form-control'}}) }}
+
+                        </div>
+                        <div class="form-group col-lg-6">
+                            {{ form_label(form.ubicacion,'Ubicacion:') }}
                             {{ form_errors(form.ubicacion) }}
                             {{ form_widget(form.ubicacion,{'attr':{'class':'select2 form-control','placeholder':'Requerido: responsable o lista de responsables'}}) }}
                         </div>
 
 
-                    </div></div></div>{{ form_widget(form.submit,{'label':'Guardar'},{'attr':{'class':'btn btn-success'}}) }}{{ form_end(form) }}
+                    </div></div></div>{{ form_widget(form.submit) }}{{ form_end(form) }}
         </div></div>
 {% endblock %}

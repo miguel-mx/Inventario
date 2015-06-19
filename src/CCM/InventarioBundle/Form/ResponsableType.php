@@ -20,6 +20,7 @@ class ResponsableType extends AbstractType
             ->add('telefono')
             ->add('puesto')
             ->add('email')
+            ->add('titulo')
             ->add('ubicacion');
         ;
     }

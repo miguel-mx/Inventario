@@ -9,11 +9,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use CCM\InventarioBundle\Entity\Responsable;
 use CCM\InventarioBundle\Entity\Bien;
 use Symfony\Component\Validator\Constraints\DateTime;
-class ResponsableCommand extends ContainerAwareCommand
+class RelacionCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
-        $this->setName('agrega:responsable')
+        $this->setName('agrega:relacion')
             ->setDescription('Agrega responsable por la ubicacion del bien')
         ;
     }
@@ -27,11 +27,11 @@ class ResponsableCommand extends ContainerAwareCommand
         $bienes = $em->getRepository('InventarioBundle:Bien')->findAll();
         $responsables = $em->getRepository('InventarioBundle:Responsable')->findAll();
         foreach($bienes as $bien){
-            foreach($responsables as $responsable){
+            foreach($responsables as $responsable)
                 if($bien->getUbicacion()==$responsable->getUbicacion()){
                     $bien->setResponsable($responsable);
                     $em->persist($bien);
-                    $em->persist($responsable);
+                    $em->persist($responsable); //persisto sin modificar nada
                     $em->flush();
                 }
             }
@@ -39,8 +39,5 @@ class ResponsableCommand extends ContainerAwareCommand
 
         }
 
-
-
-    }
 }
 
